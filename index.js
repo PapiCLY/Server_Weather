@@ -5,12 +5,18 @@ import date from 'date-and-time';
 import dotenv from 'dotenv';
 
 const port = process.env.port || 3000;
+const appId = process.env.appID
 const app =  express();
 dotenv.config();
 
+//format date for weather
 const now =  new Date();
 
+//middleware
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+app.set('view engine', 'ejs');
 
 app.get('/', (req,res)=>{
     res.render('index.ejs')
@@ -26,7 +32,7 @@ app.get('/', (req,res)=>{
    
   
     //get city name
-    const city_name = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=4d173153f9c4e96e635c03e1abb89c0a`
+    const city_name = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${appId}`
     const result = await axios.get(city_name)
   
     //lon and lat retrieved from city name api
@@ -34,7 +40,7 @@ app.get('/', (req,res)=>{
     const lon = result.data[0].lon
     
     //use long and late to get weather
-    const lat_lon = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=4d173153f9c4e96e635c03e1abb89c0a&units=imperial`
+    const lat_lon = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appId}&units=imperial`
     const lat_long_result = await axios.get(lat_lon)
   
     
