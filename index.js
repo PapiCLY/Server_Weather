@@ -4,10 +4,12 @@ import bodyParser from 'body-parser';
 import date from 'date-and-time';
 import dotenv from 'dotenv';
 
-const port = process.env.port || 3000;
-const appId = process.env.appID
 const app =  express();
 dotenv.config();
+
+const port = process.env.port || 3000;
+const appId = process.env.appID
+
 
 //format date for weather
 const now =  new Date();
@@ -16,7 +18,7 @@ const now =  new Date();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 app.get('/', (req,res)=>{
     res.render('index.ejs')
