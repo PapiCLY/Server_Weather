@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to Weather Today</h1>
+
+         
+        <form id="myForm" method="post">
+            <label for="city"> Enter City:<input id="city" type="text" name="city" ></label>
+            <!-- <label for="state"> Enter State: <input id="state" type="text" name="state" ></label> -->
+            <input id="get" type="submit"  value='Get Weather' formaction="/myForm">
+        </form>
+    <%if(locals.weather){%>
+        <h3 id="location">  </h3>
+        <h5 id="date"></h5>
+        <h5 id="icon"></h5>
+        <h5 id="temp"></h5>
+    <%}%>
+</body>
+</html>
