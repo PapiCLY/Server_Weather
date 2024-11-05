@@ -47,9 +47,7 @@ app.get('/', (req,res)=>{
     const lat_long_result = await axios.get(lat_lon)
   
     
-    // console.log(lat_long_result.data.list[0].weather[0].icon)
-    // console.log(Math.floor(lat_long_result.data.list[0].main.temp) + '°F')
-    // console.log(lat_long_result.data.list[0].weather[0].description)
+console.log(lat_long_result.data.list[2])
   
   //current date and 4 following days
   const today = date.format(now,'MM/DD/YYYY')
@@ -65,6 +63,7 @@ app.get('/', (req,res)=>{
   const future_date_4 = date.format(add_four_days, 'MM/DD/YYYY')
   
   const icon = lat_long_result.data.list[0].weather[0].icon
+  //console.log(lat_long_result.data.list[1].weather[1].icon)
 
   //city name from API
   const real_city = `${result.data[0].name}, ${result.data[0].state}`
@@ -73,7 +72,28 @@ app.get('/', (req,res)=>{
         location: real_city,
         temp: Math.floor(lat_long_result.data.list[0].main.temp) + '°F',
         date: today,
-        icon: icon
+        icon: icon,
+        desc: lat_long_result.data.list[0].weather[0].description,
+    //tomorrow
+        tomorrow_2: future_date_1,
+        temp_2: Math.floor(lat_long_result.data.list[2].main.temp) + '°F',
+        icon_2: lat_long_result.data.list[2].weather[0].icon,
+        desc_2: lat_long_result.data.list[2].weather[0].description,
+    //3rd day
+        tomorrow_3: future_date_2,
+        temp_3: Math.floor(lat_long_result.data.list[7].main.temp) + '°F',
+        icon_3: lat_long_result.data.list[7].weather[0].icon,
+        desc_3: lat_long_result.data.list[7].weather[0].description,
+    //4th day day
+        tomorrow_4: future_date_3,
+        temp_4: Math.floor(lat_long_result.data.list[15].main.temp) + '°F',
+        icon_4: lat_long_result.data.list[15].weather[0].icon,
+        desc_4: lat_long_result.data.list[15].weather[0].description,
+    //5th day day
+    tomorrow_5: future_date_4,
+    temp_5: Math.floor(lat_long_result.data.list[23].main.temp) + '°F',
+    icon_5: lat_long_result.data.list[23].weather[0].icon,
+    desc_5: lat_long_result.data.list[23].weather[0].description,
         
   })
 

@@ -14,12 +14,42 @@
             <!-- <label for="state"> Enter State: <input id="state" type="text" name="state" ></label> -->
             <input id="get" type="submit"  value='Get Weather' formaction="/myForm">
         </form>
-    <%if(locals.weather || locals.date || locals.temp || locals.location || loacls.icon){%>
+    <%if(locals.weather || locals.date || locals.temp || locals.location || locals.icon || locals.tomorrow_2 || locals.temp_2 || locals.icon_2 || locals.desc || locals.desc_2 || lcoals.tomorrow_3 || locals.temp_2 || locals.icon_3|| locals.desc_3 || locals.tomorrow_4 || locals.temp_4 || locals.icon_4 || locals.desc_4 || locals.tomorrow_5 || locals.temp_5 || locals.icon_5 || locals.desc_5){%>
+        <%# Today's weather %>
         <h3 id="location"> <%= location %> </h3>
         <h5 id="date"><%= date %></h5>
         <h5 id="icon"><img src="https://openweathermap.org/img/wn/<%= icon %>@2x.png" alt="Weather Icon" />
         </h5>
         <h5 id="temp"><%= temp %></h5>
+        <h5 id="des"><%= desc %></h5>
+
+        <%# Weather - day 2 %>
+        <h5 id="date"><%= tomorrow_2%></h5>
+        <h5 id="icon"><img src="https://openweathermap.org/img/wn/<%= icon_2 %>@2x.png" alt="Weather Icon" />
+        </h5>
+        <h5 id="temp"><%= temp_2 %></h5>
+        <h5 id="des"><%= desc_2 %></h5>
+
+         <%# Weather - day 3 %>
+         <h5 id="date"><%= tomorrow_3%></h5>
+         <h5 id="icon"><img src="https://openweathermap.org/img/wn/<%= icon_3 %>@2x.png" alt="Weather Icon" />
+         </h5>
+         <h5 id="temp"><%= temp_3 %></h5>
+         <h5 id="des"><%= desc_3 %></h5>
+
+          <%# Weather - day 4 %>
+          <h5 id="date"><%= tomorrow_4%></h5>
+          <h5 id="icon"><img src="https://openweathermap.org/img/wn/<%= icon_4 %>@2x.png" alt="Weather Icon" />
+          </h5>
+          <h5 id="temp"><%= temp_4 %></h5>
+          <h5 id="des"><%= desc_4 %></h5>
+
+          <%# Weather - day 5 %>
+          <h5 id="date"><%= tomorrow_5%></h5>
+          <h5 id="icon"><img src="https://openweathermap.org/img/wn/<%= icon_5 %>@2x.png" alt="Weather Icon" />
+          </h5>
+          <h5 id="temp"><%= temp_5 %></h5>
+          <h5 id="des"><%= desc_5 %></h5>
     <%}%>
 </body>
 </html>
