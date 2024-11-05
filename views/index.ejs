@@ -101,16 +101,80 @@ h1{
     margin: 5px;
   }
   
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .forecast li {
-      flex: 1 1 100%;
-      max-width: 100%;
+ /* Mobile (up to 480px) */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
     }
     .temperature span {
-      font-size: 36px;
+        font-size: 36px;
     }
-  }
+    .forecast img {
+        width: 40px;
+        height: 40px;
+    }
+    .weather-panel {
+        padding: 15px;
+    }
+    .forecast li {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* Tablet (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+    }
+    .temperature span {
+        font-size: 42px;
+    }
+    .forecast img {
+        width: 45px;
+        height: 45px;
+    }
+    .weather-panel {
+        padding: 20px;
+    }
+    .forecast li {
+        flex: 1 1 45%;
+    }
+}
+
+/* Laptop (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    h2 {
+        font-size: 24px;
+    }
+    .temperature span {
+        font-size: 48px;
+    }
+    .forecast img {
+        width: 50px;
+        height: 50px;
+    }
+    .forecast li {
+        flex: 1 1 30%;
+    }
+}
+
+/* Desktop (above 1024px) */
+@media (min-width: 1025px) {
+    h2 {
+        font-size: 26px;
+    }
+    .temperature span {
+        font-size: 54px;
+    }
+    .forecast img {
+        width: 55px;
+        height: 55px;
+    }
+    .forecast li {
+        flex: 1 1 20%;
+    }
+}
     </style>
     <div id="title_h1">
         <h1>Welcome to Weather Today | </h1>
