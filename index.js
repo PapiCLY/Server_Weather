@@ -45,9 +45,19 @@ app.get('/', (req,res)=>{
     //use long and late to get weather
     const lat_lon = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appId}&units=imperial`
     const lat_long_result = await axios.get(lat_lon)
+
+    //current day temp and conversion from Kelvin
+    const current_day = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`;
+    const current_day_result = await axios.get(current_day)
+    
+    const kelvin = current_day_result.data.main.temp
+    const fah = Math.trunc((kelvin * (9/5)) - 459.67)
+    const desc_today = current_day_result.data.weather[0].description
+    const icon_today = current_day_result.data.weather[0].icon
+  
   
     
-console.log(lat_long_result.data.list[2])
+
   
   //current date and 4 following days
   const today = date.format(now,'MM/DD/YYYY')
@@ -70,30 +80,30 @@ console.log(lat_long_result.data.list[2])
   res.render('index.ejs', {
     //today
         location: real_city,
-        temp: Math.floor(lat_long_result.data.list[0].main.temp) + '°F',
+        temp: fah + '°F',
         date: today,
-        icon: icon,
-        desc: lat_long_result.data.list[0].weather[0].description,
+        icon: icon_today,
+        desc: desc_today,
     //tomorrow
         tomorrow_2: future_date_1,
-        temp_2: Math.floor(lat_long_result.data.list[2].main.temp) + '°F',
-        icon_2: lat_long_result.data.list[2].weather[0].icon,
-        desc_2: lat_long_result.data.list[2].weather[0].description,
+        temp_2: Math.floor(lat_long_result.data.list[6].main.temp) + '°F',
+        icon_2: lat_long_result.data.list[6].weather[0].icon,
+        desc_2: lat_long_result.data.list[6].weather[0].description,
     //3rd day
         tomorrow_3: future_date_2,
-        temp_3: Math.floor(lat_long_result.data.list[7].main.temp) + '°F',
-        icon_3: lat_long_result.data.list[7].weather[0].icon,
-        desc_3: lat_long_result.data.list[7].weather[0].description,
+        temp_3: Math.floor(lat_long_result.data.list[14].main.temp) + '°F',
+        icon_3: lat_long_result.data.list[14].weather[0].icon,
+        desc_3: lat_long_result.data.list[14].weather[0].description,
     //4th day day
         tomorrow_4: future_date_3,
-        temp_4: Math.floor(lat_long_result.data.list[15].main.temp) + '°F',
-        icon_4: lat_long_result.data.list[15].weather[0].icon,
-        desc_4: lat_long_result.data.list[15].weather[0].description,
+        temp_4: Math.floor(lat_long_result.data.list[22].main.temp) + '°F',
+        icon_4: lat_long_result.data.list[22].weather[0].icon,
+        desc_4: lat_long_result.data.list[22].weather[0].description,
     //5th day day
     tomorrow_5: future_date_4,
-    temp_5: Math.floor(lat_long_result.data.list[23].main.temp) + '°F',
-    icon_5: lat_long_result.data.list[23].weather[0].icon,
-    desc_5: lat_long_result.data.list[23].weather[0].description,
+    temp_5: Math.floor(lat_long_result.data.list[30].main.temp) + '°F',
+    icon_5: lat_long_result.data.list[30].weather[0].icon,
+    desc_5: lat_long_result.data.list[30].weather[0].description,
         
   })
 

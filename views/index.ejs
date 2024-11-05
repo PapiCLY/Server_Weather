@@ -196,7 +196,7 @@ h1{
                     
                     <!-- Today's weather -->
                     <div class="col-xs-6">
-                      <h2><%= location %><br><small><%= date %></small></h2>
+                      <h2><%= location %><br><small>Today</small></h2>
                       <p class="h3"><img src="https://openweathermap.org/img/wn/<%= icon %>@2x.png" alt="Weather Icon"> <%= desc %></p>
                     </div>
                     <div class="col-xs-6 text-center">
@@ -211,6 +211,7 @@ h1{
                         
                         <!-- Day 2 -->
                         <li class="col-xs-4 col-sm-2 text-center">
+                          <h3>Tomorrow</h3>
                           <h3 class="h5"><%= tomorrow_2 %></h3>
                           <p><img src="https://openweathermap.org/img/wn/<%= icon_2 %>@2x.png" alt="Weather Icon"><br><%= temp_2 %>°</p>
                           <p><%= desc_2 %></p>
