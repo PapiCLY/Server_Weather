@@ -14,11 +14,12 @@
             <!-- <label for="state"> Enter State: <input id="state" type="text" name="state" ></label> -->
             <input id="get" type="submit"  value='Get Weather' formaction="/myForm">
         </form>
-    <%if(locals.weather){%>
-        <h3 id="location">  </h3>
-        <h5 id="date"></h5>
-        <h5 id="icon"></h5>
-        <h5 id="temp"></h5>
+    <%if(locals.weather || locals.date || locals.temp || locals.location || loacls.icon){%>
+        <h3 id="location"> <%= location %> </h3>
+        <h5 id="date"><%= date %></h5>
+        <h5 id="icon"><img src="https://openweathermap.org/img/wn/<%= icon %>@2x.png" alt="Weather Icon" />
+        </h5>
+        <h5 id="temp"><%= temp %></h5>
     <%}%>
 </body>
 </html>

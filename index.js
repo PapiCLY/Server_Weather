@@ -36,7 +36,8 @@ app.get('/', (req,res)=>{
     //get city name
     const city_name = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${appId}`
     const result = await axios.get(city_name)
-  
+    
+    //const { name, state} = city_name.name
     //lon and lat retrieved from city name api
     const lat = result.data[0].lat
     const lon = result.data[0].lon
@@ -46,9 +47,9 @@ app.get('/', (req,res)=>{
     const lat_long_result = await axios.get(lat_lon)
   
     
-    console.log(lat_long_result.data.list[0].weather[0].icon)
-    console.log(Math.floor(lat_long_result.data.list[0].main.temp) + '°F')
-    console.log(lat_long_result.data.list[0].weather[0].description)
+    // console.log(lat_long_result.data.list[0].weather[0].icon)
+    // console.log(Math.floor(lat_long_result.data.list[0].main.temp) + '°F')
+    // console.log(lat_long_result.data.list[0].weather[0].description)
   
   //current date and 4 following days
   const today = date.format(now,'MM/DD/YYYY')
@@ -63,7 +64,19 @@ app.get('/', (req,res)=>{
   const future_date_3 = date.format(add_three_days, 'MM/DD/YYYY')
   const future_date_4 = date.format(add_four_days, 'MM/DD/YYYY')
   
-  
+  const icon = lat_long_result.data.list[0].weather[0].icon
+
+  //city name from API
+  const real_city = `${result.data[0].name}, ${result.data[0].state}`
+  res.render('index.ejs', {
+    //today
+        location: real_city,
+        temp: Math.floor(lat_long_result.data.list[0].main.temp) + '°F',
+        date: today,
+        icon: icon
+        
+  })
+
   }catch(error){
     //res.render('index.ejs', { weather: error.response.data })
     res.status(500)
