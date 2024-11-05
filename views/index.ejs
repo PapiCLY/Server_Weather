@@ -19,10 +19,29 @@ body {
     min-height: 100vh;
     margin: 0;
   }
-  #title_h1{
-    padding-right: 100px;
+h1{
+    color:#ff6f61;
+  }
+  #get{
+    border: none;
+    padding: 10px;
+    background-color: darkgray;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s;
+  }
+
+  #get:hover{
+    background-color: #ff6f61;
+    cursor: pointer;
+    color: wheat;
+    font-weight: bold;
   }
   
+  #myForm{
+    justify-content: left;
+  }
   .main.container {
     padding: 20px;
   }
@@ -94,15 +113,15 @@ body {
   }
     </style>
     <div id="title_h1">
-        <h1>Welcome to Weather Today</h1>
+        <h1>Welcome to Weather Today | </h1>
     </div>
     
 
          
         <form id="myForm" method="post">
-            <label for="city"> Enter City:<input id="city" type="text" name="city" ></label>
+            <label for="city" style="font-weight: bold;font-size: 1.5em;">Enter City:<input id="city" style="border: none;padding: 8px;border-radius: 10px;" type="text" name="city" placeholder="Ex: Brooklyn"></label>
             <!-- <label for="state"> Enter State: <input id="state" type="text" name="state" ></label> -->
-            <input id="get" type="submit"  value='Get Weather' formaction="/myForm">
+            <input id="get"  type="submit"  value='Get Weather' formaction="/myForm">
         </form>
         <div class="main container">
             <div class="row">
